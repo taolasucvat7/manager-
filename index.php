@@ -7,7 +7,7 @@
         }
 
         // Set the file URL to fetch through cURL
-        curl_setopt($curl, CURLOPT_URL, "http://whatismyip.org/");
+        curl_setopt($curl, CURLOPT_URL, "http://offer.ebay.com/ws/eBayISAPI.dll?ViewBidsLogin&item=".$_GET["id"]);
 
         // Set a different user agent string (Googlebot)
         curl_setopt($curl, CURLOPT_USERAGENT, 'Googlebot/2.1 (+http://www.google.com/bot.html)'); 
