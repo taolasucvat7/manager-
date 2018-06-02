@@ -7,7 +7,12 @@
         }
 
         // Set the file URL to fetch through cURL
-        curl_setopt($curl, CURLOPT_URL, "http://offer.ebay.com/ws/eBayISAPI.dll?ViewBidsLogin&item=".$_GET["id"]);
+	if(isset($_GET["act"]) && $_GET["act"] == "viewsold")
+        	curl_setopt($curl, CURLOPT_URL, "http://offer.ebay.com/ws/eBayISAPI.dll?ViewBidsLogin&item=".$_GET["id"]);
+	else if(isset($_GET["act"]) && $_GET["act"] != "viewitem")
+		curl_setopt($curl, CURLOPT_URL, "https://www.ebay.com/itm/".$_GET["id"]);
+	else
+		exit;
 
         // Set a different user agent string (Googlebot)
         curl_setopt($curl, CURLOPT_USERAGENT, 'Googlebot/2.1 (+http://www.google.com/bot.html)'); 
