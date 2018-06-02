@@ -9,7 +9,7 @@
         // Set the file URL to fetch through cURL
 	if(isset($_GET["act"]) && $_GET["act"] == "viewsold")
         	curl_setopt($curl, CURLOPT_URL, "http://offer.ebay.com/ws/eBayISAPI.dll?ViewBidsLogin&item=".$_GET["id"]);
-	else if(isset($_GET["act"]) && $_GET["act"] != "viewitem")
+	else if(isset($_GET["act"]) && $_GET["act"] == "viewitem")
 		curl_setopt($curl, CURLOPT_URL, "http://ebay.com/itm/".$_GET["id"]);
 	else
 		exit;
