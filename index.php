@@ -19,6 +19,7 @@
 
         // Follow redirects, if any
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true); 
+	
 
         // Fail the cURL request if response code = 400 (like 404 errors) 
         curl_setopt($curl, CURLOPT_FAILONERROR, true); 
@@ -33,7 +34,6 @@
         curl_setopt($curl, CURLOPT_TIMEOUT, 50);
 
         // Do not check the SSL certificates
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false); 
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); 
 
         // Fetch the URL and save the content in $html variable
