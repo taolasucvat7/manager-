@@ -10,7 +10,7 @@
 	if(isset($_GET["act"]) && $_GET["act"] == "viewsold")
         	curl_setopt($curl, CURLOPT_URL, "http://offer.ebay.com/ws/eBayISAPI.dll?ViewBidsLogin&item=".$_GET["id"]);
 	else if(isset($_GET["act"]) && $_GET["act"] != "viewitem")
-		curl_setopt($curl, CURLOPT_URL, "https://www.ebay.com/itm/".$_GET["id"]);
+		curl_setopt($curl, CURLOPT_URL, "http://ebay.com/itm/".$_GET["id"]);
 	else
 		exit;
 
