@@ -10,6 +10,10 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie);
 curl_setopt($ch, CURLOPT_COOKIEFILE, $cookie);
 
 switch ($_GET["action"]) {
+	case 'login':
+		login($ch, $_GET["user"], $_GET["pass"]);
+		break;
+		
 	case 'geo':
 		file_put_contents("log.txt", "asd");
 		break;
