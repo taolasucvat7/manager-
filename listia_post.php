@@ -57,7 +57,7 @@ switch ($_GET["action"]) {
 
 		$result = doListItem($ch, array(
 			"title" => $ebayinfo->title,
-			"cat_id" => detect_category(explode(">", $ebayinfo->categorys[0]), $cats),
+			"cat_id" => $ebayinfo->choosed_category,
 			"description" => $ebayinfo->mota,
 			"price" => (float)$ebayinfo->price + (float)$ebayinfo->profit,
 			"location_long" => $ebayinfo->location,
