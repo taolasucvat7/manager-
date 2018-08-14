@@ -11,6 +11,7 @@ $result = curl_exec($ch);
  
 curl_close($ch);
 
-file_put_contents("log.txt", $result);
+echo $result;
+//file_put_contents("log.txt", $result);
 
 ?>
