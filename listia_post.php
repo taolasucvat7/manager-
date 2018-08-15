@@ -138,7 +138,7 @@ function getInfo($ch){
 
 		$result = array();
 
-		if(!isset($dom->getElementById("sub_menu_your_auctions"))){
+		if(!$dom->getElementById("sub_menu_your_auctions")){
 			$result["error"] = false;
 			return $result;
 		}
