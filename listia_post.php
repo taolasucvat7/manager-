@@ -140,6 +140,12 @@ function getInfo($ch){
 
 		$list_a = $dom->getElementById("sub_menu_your_auctions")->getElementsByTagName("a");
 
+		if($dom->getElementById("sub_menu_your_auctions") == null){
+			$result["error"] = false;
+			return $result;
+		}
+
+
 		foreach ($list_a as $va) {
 			if($va->getAttribute("href") == "/account/auctions_listed"){
 				$result["listed"] = $va->nodeValue;
@@ -152,7 +158,7 @@ function getInfo($ch){
 
 		$result["avatar"] = getElementByClass($dom, "div", "avatar")->getElementsByTagName("img")[0]->getAttribute("src");
 
-		$result["error"] = false;
+		
 
 	}catch (Exception $e) {
 
