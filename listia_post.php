@@ -131,24 +131,21 @@ function getInfo($ch){
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE); 
 	$response = curl_exec($ch);
 
-	$result = array();
-	
 	try {
 		$dom = new DOMDocument();
 		$dom->loadHTML($response);
 
 
-		
-/*
-		$list_a = $dom->getElementById("sub_menu_your_auctions")->getElementsByTagName("a");
+		$result = array();
 
 		if(!isset($dom->getElementById("sub_menu_your_auctions"))){
 			$result["error"] = false;
 			return $result;
 		}
+
+		$list_a = $dom->getElementById("sub_menu_your_auctions")->getElementsByTagName("a");
+
 		
-
-
 		foreach ($list_a as $va) {
 			if($va->getAttribute("href") == "/account/auctions_listed"){
 				$result["listed"] = $va->nodeValue;
@@ -160,8 +157,7 @@ function getInfo($ch){
 		$result["username"] = getElementByClass($dom, "a", "lt-user-login")->nodeValue;
 
 		$result["avatar"] = getElementByClass($dom, "div", "avatar")->getElementsByTagName("img")[0]->getAttribute("src");
-		
-		*/
+
 		
 
 	}catch (Exception $e) {
