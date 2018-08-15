@@ -131,20 +131,22 @@ function getInfo($ch){
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE); 
 	$response = curl_exec($ch);
 
+	$result = array();
+	
 	try {
 		$dom = new DOMDocument();
 		$dom->loadHTML($response);
 
 
-		$result = array();
-
+		
+/*
 		$list_a = $dom->getElementById("sub_menu_your_auctions")->getElementsByTagName("a");
 
 		if(!isset($dom->getElementById("sub_menu_your_auctions"))){
 			$result["error"] = false;
 			return $result;
 		}
-		/*
+		
 
 
 		foreach ($list_a as $va) {
