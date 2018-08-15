@@ -144,6 +144,7 @@ function getInfo($ch){
 			$result["error"] = false;
 			return $result;
 		}
+		/*
 
 
 		foreach ($list_a as $va) {
@@ -157,7 +158,8 @@ function getInfo($ch){
 		$result["username"] = getElementByClass($dom, "a", "lt-user-login")->nodeValue;
 
 		$result["avatar"] = getElementByClass($dom, "div", "avatar")->getElementsByTagName("img")[0]->getAttribute("src");
-
+		
+		*/
 		
 
 	}catch (Exception $e) {
