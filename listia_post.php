@@ -140,7 +140,7 @@ function getInfo($ch){
 
 		$list_a = $dom->getElementById("sub_menu_your_auctions")->getElementsByTagName("a");
 
-		if($dom->getElementById("sub_menu_your_auctions") == null){
+		if(!isset($dom->getElementById("sub_menu_your_auctions"))){
 			$result["error"] = false;
 			return $result;
 		}
