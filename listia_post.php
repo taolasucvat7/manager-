@@ -131,27 +131,34 @@ function getInfo($ch){
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE); 
 	$response = curl_exec($ch);
 
-	$dom = new DOMDocument();
-	$dom->loadHTML($response);
+	try {
+		$dom = new DOMDocument();
+		$dom->loadHTML($response);
 
 
-	$result = array();
+		$result = array();
 
-	$list_a = $dom->getElementById("sub_menu_your_auctions")->getElementsByTagName("a");
+		$list_a = $dom->getElementById("sub_menu_your_auctions")->getElementsByTagName("a");
 
-	foreach ($list_a as $va) {
-		if($va->getAttribute("href") == "/account/auctions_listed"){
-			$result["listed"] = $va->nodeValue;
-			break;
+		foreach ($list_a as $va) {
+			if($va->getAttribute("href") == "/account/auctions_listed"){
+				$result["listed"] = $va->nodeValue;
+				break;
+			}
 		}
+
+		
+		$result["username"] = getElementByClass($dom, "a", "lt-user-login")->nodeValue;
+
+		$result["avatar"] = getElementByClass($dom, "div", "avatar")->getElementsByTagName("img")[0]->getAttribute("src");
+
+		$result["error"] = false;
+
+	}catch (Exception $e) {
+
+	    $result["error"] = true;
+
 	}
-
-	
-	$result["username"] = getElementByClass($dom, "a", "lt-user-login")->nodeValue;
-
-	$result["avatar"] = getElementByClass($dom, "div", "avatar")->getElementsByTagName("img")[0]->getAttribute("src");
-
-	//avatar
 
 	return $result;
 }
