@@ -142,7 +142,7 @@ function getInfo($ch){
 			$result["error"] = false;
 			return $result;
 		}
-
+		/*
 		$list_a = $dom->getElementById("sub_menu_your_auctions")->getElementsByTagName("a");
 
 		
@@ -157,7 +157,7 @@ function getInfo($ch){
 		$result["username"] = getElementByClass($dom, "a", "lt-user-login")->nodeValue;
 
 		$result["avatar"] = getElementByClass($dom, "div", "avatar")->getElementsByTagName("img")[0]->getAttribute("src");
-
+		*/
 		
 
 	}catch (Exception $e) {
