@@ -87,7 +87,8 @@ switch ($_GET["action"]) {
 		
 		break;
 	default:
-		echo "{'username' : 'cuong077', 'avatar':'noavatar'}";
+		//echo "{'username' : 'cuong077', 'avatar':'noavatar'}";
+		echo json_encode(getInfo($ch));
 		break;
 }
 
@@ -122,6 +123,38 @@ print_r(doListItem($ch, array(
 
 
 
+function getInfo($ch){
+	$url = "https://www.listia.com";
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1); 
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE); 
+	$response = curl_exec($ch);
+
+	$dom = new DOMDocument();
+	$dom->loadHTML($response);
+
+
+	$result = array();
+
+	$list_a = $dom->getElementById("sub_menu_your_auctions")->getElementsByTagName("a");
+
+	foreach ($list_a as $va) {
+		if($va->getAttribute("href") == "/account/auctions_listed"){
+			$result["listed"] = $va->nodeValue;
+			break;
+		}
+	}
+
+	
+	$result["username"] = getElementByClass($dom, "a", "lt-user-login")->nodeValue;
+
+	$result["avatar"] = getElementByClass($dom, "div", "avatar")->getElementsByTagName("img")[0]->getAttribute("src");
+
+	//avatar
+
+	return $result;
+}
 
 
 
