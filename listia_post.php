@@ -143,12 +143,25 @@ function getInfo($ch){
 			return $result;
 		}
 		
-		$list_a = $dom->getElementById("sub_menu_your_auctions")->getElementsByTagName("a");
+		$list_a_list = $dom->getElementById("sub_menu_your_auctions")->getElementsByTagName("a");
 
 		
-		foreach ($list_a as $va) {
+		foreach ($list_a_list as $va) {
+
 			if($va->getAttribute("href") == "/account/auctions_listed"){
 				$result["listed"] = $va->nodeValue;
+				break;
+			}
+
+		}
+
+
+		$list_a_mess = $dom->getElementById("sub_menu_msgs")->getElementsByTagName("a");
+
+		
+		foreach ($list_a_mess as $va) {
+			if($va->getAttribute("href") == "/account/inbox"){
+				$result["inbox"] = $va->nodeValue;
 				break;
 			}
 		}
@@ -158,6 +171,8 @@ function getInfo($ch){
 
 		$result["avatar"] = getElementByClass($dom, "div", "avatar")->getElementsByTagName("img")[0]->getAttribute("src");
 		
+
+
 		$result["error"] = false;
 
 	}catch (Exception $e) {
