@@ -67,17 +67,18 @@ switch ($_GET["action"]) {
 			"images"	=> $ebayinfo->images
 		));
 
-
-
-
-
 		try{
 			if($result->redirect_url != null){
 				preg_match("/https:\/\/www.listia.com\/auction\/(.*?)-/", $result->redirect_url, $matches);
-				$info["id_listia"] = $matches[1];
+				try{
+					if($matches[1] == "" || $matches[1] == null)
+						$info["id_listia"] = $result->redirect_url;
+					else
+						$info["id_listia"] = $matches[1];
+				}catch(Exception $e){
+					$info["id_listia"] = $result->redirect_url;
+				}
 				$info["error"] = false;
-				if($info["id_listia"] == "" || $info["id_listia"] == null)
-					$info["error"] = true;
 			}
 		}catch(Exception $e){
 			$info["error"] = true;
