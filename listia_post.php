@@ -330,10 +330,13 @@ function getAuctionFromNotify($ch, $list_id = array()){
 			$form_action = $xpath->query("//form[@id = 'auction-agent-form-email-form-2']")[0]->getAttribute("action");
 			$result["form_action"] = $form_action ;
 		}
+
+		if($xpath->query("//div[@id = 'bid-history-list']")->length){
+			$div_bid = $dom->saveHTML($xpath->query("//div[@id = 'bid-history-list']")[0]);
+			$result["div_bid"] = $div_bid ;
+		}
+
 		
-
-
-
 	}catch (Exception $e) {
 
 	    $result["error"] = true;
