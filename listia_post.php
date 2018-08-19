@@ -299,6 +299,16 @@ function getAuctionFromNotify($ch, $list_id = array()){
 		}
 		
 
+		if($xpath->query("//div[@class = 'address_confirmation_bubble']")){
+			$address_confirmation_bubble = $xpath->query("//div[@class = 'address_confirmation_bubble']");
+			if($address_confirmation_bubble){
+				$maddress_confirmation_bubble_html = $dom->saveHTML($address_confirmation_bubble[0]);
+				$result["address_confirmation"] = $maddress_confirmation_bubble_html;
+			}else{
+				$result["address_confirmation"] = "";
+			}
+		}
+
 		
 		
 
