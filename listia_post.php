@@ -1,3 +1,29 @@
+<script
+  src="https://code.jquery.com/jquery-2.2.4.js"
+  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+  crossorigin="anonymous"></script>
+
+<script>
+	$( document ).ready(function() {
+	    $(".full_msg_parent_text").parent().css({'margin-left':'20px', 'background-color':'#eee'})
+	});
+</script>
+
+<style type="text/css">
+	.post-auction-message-indent{
+		margin-left: 50px;
+	}
+	ul{
+		list-style-type: none;
+	}
+	li{
+		margin-bottom: 20px;
+		border-bottom: 1px solid black;
+	}
+</style>
+
+
+
 <?php
 error_reporting(0);
 $cats = json_decode('[{"id":1,"shipping":true,"name":"Antiques","children":[]},{"id":72061,"shipping":true,"name":"Art","children":[{"id":72064,"shipping":true,"name":"Paintings","children":[]},{"id":72062,"shipping":true,"name":"Photography","children":[]},{"id":72063,"shipping":true,"name":"Posters","children":[]},{"id":72065,"shipping":true,"name":"Other","children":[]}]},{"id":3,"shipping":true,"name":"Baby","children":[{"id":22,"shipping":true,"name":"Clothes","children":[]},{"id":128,"shipping":true,"name":"Diapers","children":[]},{"id":13362,"shipping":true,"name":"Gear","children":[]},{"id":23,"shipping":true,"name":"Toys","children":[]},{"id":9432,"shipping":true,"name":"Other","children":[]}]},{"id":4,"shipping":true,"name":"Books","children":[{"id":63,"shipping":true,"name":"Children","children":[]},{"id":64,"shipping":true,"name":"Cookbooks","children":[]},{"id":24,"shipping":true,"name":"Fiction","children":[]},{"id":25,"shipping":true,"name":"Nonfiction","children":[]},{"id":26,"shipping":true,"name":"Textbooks \u0026 Education","children":[]},{"id":13197,"shipping":true,"name":"Other","children":[]}]},{"id":5,"shipping":true,"name":"Cameras","children":[{"id":4067,"shipping":true,"name":"Accessories","children":[]},{"id":628,"shipping":true,"name":"Camcorders","children":[]},{"id":1452,"shipping":true,"name":"Digital Cameras","children":[]},{"id":279,"shipping":true,"name":"Memory \u0026 Storage","children":[]},{"id":71759,"shipping":true,"name":"Other","children":[]}]},{"id":6,"shipping":true,"name":"Cars, Vehicles \u0026 Parts","children":[{"id":5253,"shipping":true,"name":"Accessories","children":[]},{"id":6105,"shipping":true,"name":"Other","children":[]}]},{"id":7,"shipping":true,"name":"Cell Phones","children":[{"id":27,"shipping":true,"name":"Accessories","children":[]},{"id":1205,"shipping":true,"name":"Cases","children":[]},{"id":136,"shipping":true,"name":"Phones","children":[]},{"id":35244,"shipping":true,"name":"Other","children":[]}]},{"id":8,"shipping":true,"name":"Clothing, Shoes \u0026 Accessories","children":[{"id":28,"shipping":true,"name":"Boys","children":[]},{"id":29,"shipping":true,"name":"Girls","children":[]},{"id":809,"shipping":true,"name":"Handbags","children":[]},{"id":30,"shipping":true,"name":"Men","children":[{"id":72094,"shipping":true,"name":"Bottoms","children":[]},{"id":72095,"shipping":true,"name":"Outerwear","children":[]},{"id":72093,"shipping":true,"name":"Tops","children":[]},{"id":72096,"shipping":true,"name":"Other","children":[]}]},{"id":107,"shipping":true,"name":"Shoes","children":[]},{"id":278,"shipping":true,"name":"Wallets \u0026 Accessories","children":[]},{"id":31,"shipping":true,"name":"Women","children":[{"id":72090,"shipping":true,"name":"Bottoms","children":[]},{"id":72091,"shipping":true,"name":"Outerwear","children":[]},{"id":72089,"shipping":true,"name":"Tops","children":[]},{"id":72092,"shipping":true,"name":"Other","children":[]}]},{"id":16960,"shipping":true,"name":"Other","children":[]}]},{"id":9,"shipping":true,"name":"Collectibles","children":[{"id":32,"shipping":true,"name":"Coins","children":[]},{"id":33,"shipping":true,"name":"Comics","children":[]},{"id":52,"shipping":true,"name":"Stamps","children":[]},{"id":72086,"shipping":true,"name":"Toys","children":[]},{"id":34,"shipping":true,"name":"Trading Cards","children":[{"id":72087,"shipping":true,"name":"Gaming","children":[]},{"id":75,"shipping":true,"name":"Sports","children":[]},{"id":72088,"shipping":true,"name":"Other","children":[]}]},{"id":7862,"shipping":true,"name":"Other","children":[]}]},{"id":10,"shipping":true,"name":"Computers \u0026 Networking","children":[{"id":35,"shipping":true,"name":"Components","children":[]},{"id":36,"shipping":true,"name":"Desktops \u0026 Laptops","children":[]},{"id":37,"shipping":true,"name":"Drives \u0026 Storage","children":[]},{"id":38,"shipping":true,"name":"Keyboards \u0026 Mice","children":[]},{"id":39,"shipping":true,"name":"Software","children":[]},{"id":23403,"shipping":true,"name":"Other","children":[]}]},{"id":2,"shipping":true,"name":"Crafts","children":[{"id":48,"shipping":true,"name":"Beading \u0026 Jewelry Supplies","children":[]},{"id":1237,"shipping":true,"name":"Crochet","children":[]},{"id":57,"shipping":true,"name":"Knitting","children":[]},{"id":50,"shipping":true,"name":"Needlecraft","children":[]},{"id":5450,"shipping":true,"name":"Needlepoint","children":[]},{"id":49,"shipping":true,"name":"Scrapbooking \u0026 Paper Crafts","children":[]},{"id":51,"shipping":true,"name":"Sewing","children":[]},{"id":189,"shipping":true,"name":"Stickers","children":[]},{"id":8753,"shipping":true,"name":"Other","children":[]}]},{"id":12,"shipping":true,"name":"Electronics","children":[{"id":164,"shipping":true,"name":"DVD \u0026 Blu-ray Players","children":[]},{"id":680,"shipping":true,"name":"Music Players \u0026 Accessories","children":[]},{"id":1334,"shipping":true,"name":"TVs","children":[]},{"id":11815,"shipping":true,"name":"Other","children":[]}]},{"id":13,"shipping":true,"name":"Health \u0026 Beauty","children":[{"id":67,"shipping":true,"name":"Fragrances","children":[]},{"id":455,"shipping":true,"name":"Hair","children":[{"id":72083,"shipping":true,"name":"Products","children":[]},{"id":72084,"shipping":true,"name":"Tools \u0026 Accessories","children":[]},{"id":72085,"shipping":true,"name":"Other","children":[]}]},{"id":68,"shipping":true,"name":"Healthcare Goods","children":[]},{"id":66,"shipping":true,"name":"Makeup","children":[{"id":72077,"shipping":true,"name":"Eyes","children":[]},{"id":72078,"shipping":true,"name":"Face","children":[]},{"id":72079,"shipping":true,"name":"Lips","children":[]},{"id":72080,"shipping":true,"name":"Nails","children":[]},{"id":72081,"shipping":true,"name":"Tools \u0026 Accessories","children":[]},{"id":72082,"shipping":true,"name":"Other","children":[]}]},{"id":69,"shipping":true,"name":"Skincare, Bath \u0026 Body","children":[]},{"id":9839,"shipping":true,"name":"Other","children":[]}]},{"id":71,"shipping":true,"name":"Holiday \u0026 Seasonal","children":[{"id":523,"shipping":true,"name":"Birthday","children":[]},{"id":140,"shipping":true,"name":"Christmas","children":[]},{"id":114,"shipping":true,"name":"Halloween","children":[]},{"id":1909,"shipping":true,"name":"Wedding","children":[]},{"id":30920,"shipping":true,"name":"Other","children":[]}]},{"id":14,"shipping":true,"name":"Home \u0026 Garden","children":[{"id":432,"shipping":true,"name":"Decor","children":[]},{"id":42,"shipping":true,"name":"Furniture","children":[]},{"id":7178,"shipping":true,"name":"Gardening","children":[{"id":72075,"shipping":true,"name":"Live Plants","children":[]},{"id":60,"shipping":true,"name":"Seeds \u0026 Bulbs","children":[]},{"id":59,"shipping":true,"name":"Tools","children":[]},{"id":72076,"shipping":true,"name":"Other","children":[]}]},{"id":70,"shipping":true,"name":"Kitchen","children":[]},{"id":58,"shipping":true,"name":"Office Supplies","children":[]},{"id":24216,"shipping":true,"name":"Other","children":[]}]},{"id":15,"shipping":true,"name":"Jewelry \u0026 Watches","children":[{"id":333,"shipping":true,"name":"Body","children":[]},{"id":56,"shipping":true,"name":"Bracelets","children":[]},{"id":365,"shipping":true,"name":"Charms","children":[]},{"id":54,"shipping":true,"name":"Earrings","children":[]},{"id":53,"shipping":true,"name":"Necklaces","children":[]},{"id":55,"shipping":true,"name":"Rings","children":[]},{"id":752,"shipping":true,"name":"Sets","children":[]},{"id":81,"shipping":true,"name":"Watches","children":[]},{"id":2617,"shipping":true,"name":"Other","children":[]}]},{"id":11,"shipping":true,"name":"Movies \u0026 TV Shows","children":[{"id":47,"shipping":true,"name":"Blu-ray","children":[]},{"id":40,"shipping":true,"name":"DVD","children":[]},{"id":41,"shipping":true,"name":"VHS","children":[]},{"id":18327,"shipping":true,"name":"Other","children":[]}]},{"id":16,"shipping":true,"name":"Music \u0026 Instruments","children":[{"id":73,"shipping":true,"name":"CDs","children":[]},{"id":4226,"shipping":true,"name":"Instruments \u0026 Accessories","children":[]},{"id":74,"shipping":true,"name":"Records","children":[]},{"id":8115,"shipping":true,"name":"Other","children":[]}]},{"id":17,"shipping":true,"name":"Pet","children":[{"id":78,"shipping":true,"name":"Bird","children":[]},{"id":77,"shipping":true,"name":"Cat","children":[]},{"id":76,"shipping":true,"name":"Dog","children":[]},{"id":79,"shipping":true,"name":"Fish","children":[]},{"id":80,"shipping":true,"name":"Reptile","children":[]},{"id":21939,"shipping":true,"name":"Other","children":[]}]},{"id":18,"shipping":true,"name":"Sporting Goods","children":[{"id":895,"shipping":true,"name":"Baseball","children":[]},{"id":405,"shipping":true,"name":"Basketball","children":[]},{"id":1018,"shipping":true,"name":"Camping \u0026 Hunting","children":[]},{"id":10839,"shipping":true,"name":"Fishing","children":[]},{"id":1034,"shipping":true,"name":"Fitness","children":[]},{"id":156,"shipping":true,"name":"Football","children":[]},{"id":219,"shipping":true,"name":"Golf","children":[]},{"id":9458,"shipping":true,"name":"Other","children":[]}]},{"id":19,"shipping":true,"name":"Toys \u0026 Hobbies","children":[{"id":36404,"shipping":true,"name":"Building Toys","children":[]},{"id":170,"shipping":true,"name":"Cards","children":[]},{"id":706,"shipping":true,"name":"Cars \u0026 Trains","children":[]},{"id":397,"shipping":true,"name":"Dolls \u0026 Stuffed Animals","children":[]},{"id":287,"shipping":true,"name":"Games","children":[]},{"id":5428,"shipping":true,"name":"Other","children":[]}]},{"id":20,"shipping":true,"name":"Video Games \u0026 Consoles","children":[{"id":43,"shipping":true,"name":"Accessories","children":[]},{"id":45,"shipping":true,"name":"Consoles","children":[{"id":72068,"shipping":true,"name":"Nintendo","children":[]},{"id":72067,"shipping":true,"name":"PlayStation","children":[]},{"id":72066,"shipping":true,"name":"Xbox","children":[]},{"id":72069,"shipping":true,"name":"Other","children":[]}]},{"id":44,"shipping":true,"name":"Games","children":[{"id":72072,"shipping":true,"name":"Nintendo","children":[]},{"id":72073,"shipping":true,"name":"PC","children":[]},{"id":72071,"shipping":true,"name":"PlayStation","children":[]},{"id":72070,"shipping":true,"name":"Xbox","children":[]},{"id":72074,"shipping":true,"name":"Other","children":[]}]},{"id":82,"shipping":false,"name":"Prepaid Cards \u0026 Codes","children":[]},{"id":17734,"shipping":true,"name":"Other","children":[]}]},{"id":21,"shipping":true,"name":"Other Stuff","children":[{"id":72097,"shipping":false,"name":"Bitcoin","children":[]},{"id":46,"shipping":true,"name":"Gift Cards","children":[]},{"id":72,"shipping":false,"name":"Rewards Points","children":[]},{"id":1357,"shipping":true,"name":"Other","children":[]}]}]', 1);
@@ -90,8 +116,123 @@ switch ($_GET["action"]) {
 
 
 	case 'chucnang':
+		$info = getInfo($ch);
+		if(!$info["error"]){
 
-		print_r(inboxPage($ch, 2));
+			echo "<h2><img src='".$info["avatar"]."' />Tài khoản : <span style='color:green;'>".$info["username"]."</span></h2>";
+			echo "<h2><a href='listia_post.php?action=chucnang&is=inboxlist&page=1'>".$info["inbox"]."</a></h2>";
+
+			switch ($_GET['is']) {
+				case 'inboxlist':
+					echo "<h2 style='text-align:center;color:blue;'>Danh sách tin nhắn trang ".$_GET["page"]."</h2>";
+					$inboxlist = inboxPage($ch, (int)$_GET["page"])["messages"];
+					echo "<table>";
+					echo "<tr>";
+						echo "<th>Title</th>";
+						echo "<th>From</th>";
+					echo "<tr>";
+					foreach ($inboxlist as $item) {
+						echo "<tr>";
+
+						echo "<td><a href='listia_post.php?action=chucnang&is=message_detail&id=".$item->id."' style='color:".(($item->read == 0)?'blue':'black').";'>".$item->title."</a></td>";
+
+						echo "<td>".$item->from."</td>";
+
+						echo "<tr>";
+					}
+					echo "</table>";
+
+					break;
+
+				case 'message_detail':
+					echo "<h2 style='text-align:center;color:blue;'>Chi tiết tin nhắn</h2>";
+					$mess_detail = inboxMessageDetail($ch, $_GET["id"]);
+
+					echo $mess_detail["msg_date"][0];
+					echo $mess_detail["full_msg_text"];
+
+					echo '
+						<form action="listia_post.php?action=chucnang&is=send_message" method="POST">
+							<textarea rows="4" cols="50" name="message_body"></textarea>
+							<input type="hidden" name="authenticity_token" value="'.$mess_detail["authenticity_token"].'">
+							<input type="hidden" name="conversation_id" id="conversation_id" value="'.$mess_detail["conversation_id"].'">
+							<input type="hidden" name="parent_id" id="message_parent_id" value="'.$mess_detail["message_parent_id"].'">
+							<input type="hidden" name="message_type" id="message_message_type" value="'.$mess_detail["message_message_type"].'">
+							<input type="submit" value="Trả lời">
+						</form>
+					';
+					break;
+
+				case 'send_message':
+					echo "<h2 style='text-align:center;color:blue;'>Gửi tin nhắn</h2>";
+					sendMessage($ch, array(
+						"authenticity_token" => $_POST["authenticity_token"],
+						"mess_body" => $_POST["message_body"],
+						"conversation_id" => $_POST["conversation_id"],
+						"parent_id" => $_POST["parent_id"],
+						"message_type" => $_POST["message_type"]
+					));
+					echo "Đã send";
+					break;
+
+				case 'auction_detail':
+					echo "<h2 style='text-align:center;color:blue;'>Chi tiết Auction</h2>";
+					$type_id = explode("-", $_GET["id"]);
+					if($type_id[0] == "no")
+						$auction_info = getAuctionFromNotify($ch, array("notification" => $type_id[1]));
+					else
+						$auction_info = getAuctionFromNotify($ch, array("auction" => $type_id[1]));
+					echo "<h3 style='text-align:center;'>".$auction_info["title"]."</h3>";
+					echo '<h4>Địa chỉ nhận hàng<h4>';
+					echo '<div style="margin-left:20px;background-color:#eee;width:20%;">'.$auction_info["address_confirmation"].'</div>';
+					echo '<h4>Các tin nhắn<h4>';
+					echo '<ul>';
+					foreach ($auction_info["message_log"] as $mess) {
+						echo $mess;
+					}
+					echo '</ul>';
+					//print_r($auction_info["form_action"]);
+					echo '
+						<form action="listia_post.php?action=chucnang&is=send_message_contact" method="POST">
+							<input type="hidden" name="action_link" value="'.$auction_info["form_action"].'">
+							<textarea rows="4" cols="50" name="message_body"></textarea>
+					';
+
+					foreach ($auction_info["input_form"] as $key => $value) {
+						echo '<input type="hidden" name="'.$key.'" value="'.$value.'">';
+					}
+					echo '
+							<input type="submit" value="Trả lời">
+						</form>
+					';
+
+					break;
+
+				case 'send_message_contact':
+					echo "<h2 style='text-align:center;color:blue;'>Gửi tin nhắn</h2>";
+					sendMessageContact($ch, array(
+						"authenticity_token" => $_POST["authenticity_token"],
+						"mess_body" => $_POST["message_body"],
+						"parent_id" => $_POST["parent_id"],
+						"message_type" => $_POST["type"],
+						"subject" => $_POST["subject"],
+						"div_id" => $_POST["div_id"],
+						"receiver" => $_POST["receiver"],
+						"recipient" => $_POST["recipient"]
+					), $_POST["action_link"]);
+					echo "Đã send<br />";
+					echo "<a href='".$_SERVER['HTTP_REFERER']."'>Quay về</a>";
+					break;
+
+				
+			}
+
+
+		}else{
+			echo "<h2 style='color:red;'>Chưa đăng nhập</h2>";
+		}
+
+		//print_r(inboxPage($ch, 2));
 
 		break;
 
@@ -130,6 +271,150 @@ print_r(doListItem($ch, array(
 
 //echo (int)null;
 
+function getAuctionFromNotify($ch, $list_id = array()){
+	if($list_id["notification"] != "")
+		$url = "https://www.listia.com/notifications/".$list_id["notification"];
+	else
+		$url = "https://www.listia.com/auction/".$list_id["auction"];
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1); 
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE); 
+	$response = curl_exec($ch);
+
+	try {
+		$dom = new DOMDocument();
+		$dom->loadHTML($response);
+
+
+		$result = array();
+
+		$xpath = new DOMXpath($dom);
+
+		$title = $xpath->query("//title")[0]->nodeValue;
+		$result["title"] = $title;
+
+		$address_confirmation_bubble = $xpath->query("//div[@class = 'address_confirmation_bubble']");
+		if($address_confirmation_bubble){
+			$maddress_confirmation_bubble_html = $dom->saveHTML($address_confirmation_bubble[0]);
+			$result["address_confirmation"] = $maddress_confirmation_bubble_html;
+		}else{
+			$result["address_confirmation"] = "";
+		}
+
+		$message_log = $xpath->query("//div[@class = 'message-log']/ul[@class = 'comments']/li");
+
+		foreach ($message_log as $mess) {
+			$result["message_log"][] = $dom->saveHTML($mess);
+		}
+		
+
+		$input_forms = $xpath->query("*//form[@id = 'auction-agent-form-email-form-2']/input");
+
+		foreach ($input_forms as $input) {
+			$result["input_form"][$input->getAttribute("name")] = $input->getAttribute("value");
+		}
+		$result["input_form"]["subject"] = $xpath->query("//input[@id = 'subject']")[0]->getAttribute("value");
+
+		$form_action = $xpath->query("//form[@id = 'auction-agent-form-email-form-2']")[0]->getAttribute("action");
+		$result["form_action"] = $form_action ;
+
+
+
+	}catch (Exception $e) {
+
+	    $result["error"] = true;
+
+	}
+
+	return $result;
+}
+
+function sendMessageContact($ch, $data, $action_link){
+
+	$postinfo = "utf8=%E2%9C%93&authenticity_token=".urlencode($data["authenticity_token"])."&message=".urlencode($data["mess_body"])."&parent_id=".$data["parent_id"]."&type=".$data["message_type"]."&subject=".urlencode($data["subject"])."&div_id=".$data["div_id"]."&receiver=".urlencode($data["receiver"])."&recipient=".urlencode($data["recipient"])."&commit=Send+Email";
+	curl_setopt($ch, CURLOPT_URL, "https://www.listia.com".$action_link);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_POST, true);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1); 
+	curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0');
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE); 
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $postinfo);
+	curl_setopt($ch, CURLOPT_HTTPHEADER , array(
+	    "X-CSRF-Token: ".$data["authenticity_token"],
+		"X-Requested-With: XMLHttpRequest"
+	));
+	$html = curl_exec($ch);
+}
+
+function sendMessage($ch, $data){
+
+	$postinfo = "utf8=%E2%9C%93&authenticity_token=".urlencode($data["authenticity_token"])."&message%5Bbody%5D=".urlencode($data["mess_body"])."&conversation_id=".$data["conversation_id"]."&message%5Bparent_id%5D=".$data["parent_id"]."&message%5Bmessage_type%5D=".$data["message_type"]."&commit=Send+Reply";
+
+	curl_setopt($ch, CURLOPT_URL, "https://www.listia.com/messages");
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_POST, true);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1); 
+	curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0');
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE); 
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $postinfo);
+	$html = curl_exec($ch);
+}
+
+function inboxMessageDetail($ch, $id){
+	$url = "https://www.listia.com/account/message/".$id;
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1); 
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE); 
+	$response = curl_exec($ch);
+
+	try {
+		$dom = new DOMDocument();
+		$dom->loadHTML($response);
+
+
+		$result = array();
+
+		$xpath = new DOMXpath($dom);
+
+		$full_msg_date = $xpath->query("*//span[@class = 'full_msg_date']");
+
+		foreach ($full_msg_date as $msg) {
+			$result["msg_date"][] = $dom->saveHTML($msg);
+		}
+		
+
+		$full_msg_text = $xpath->query("//div[@class = 'full_msg_text']");
+		$full_msg_text_html = $dom->saveHTML($full_msg_text[0]);
+
+		$result["full_msg_text"] = $full_msg_text_html;
+		
+		$authenticity_token = $xpath->query("//form[@id = 'new_message']/input[@name = 'authenticity_token']")[0]->getAttribute("value");
+		
+		$result["authenticity_token"] = $authenticity_token;
+
+		$conversation_id = $xpath->query("//form[@id = 'new_message']/input[@name = 'conversation_id']")[0]->getAttribute("value");
+
+		$result["conversation_id"] = $conversation_id;
+
+		$message_parent_id = $xpath->query("//form[@id = 'new_message']/input[@name = 'message[parent_id]']")[0]->getAttribute("value");
+
+		$result["message_parent_id"] = $message_parent_id;
+
+		$message_message_type = $xpath->query("//form[@id = 'new_message']/input[@name = 'message[message_type]']")[0]->getAttribute("value");
+
+		$result["message_message_type"] = $message_message_type;
+
+		$result["error"] = false;
+
+	}catch (Exception $e) {
+
+	    $result["error"] = true;
+
+	}
+	return $result;
+}
 
 
 function inboxPage($ch, $page = 1){
@@ -146,40 +431,6 @@ function inboxPage($ch, $page = 1){
 
 
 		$result = array();
-
-		if(!$dom->getElementById("sub_menu_your_auctions")){
-			$result["error"] = false;
-			return $result;
-		}
-		
-		$list_a_list = $dom->getElementById("sub_menu_your_auctions")->getElementsByTagName("a");
-
-		
-		foreach ($list_a_list as $va) {
-
-			if($va->getAttribute("href") == "/account/auctions_listed"){
-				$result["listed"] = $va->nodeValue;
-				break;
-			}
-
-		}
-
-
-		$list_a_mess = $dom->getElementById("sub_menu_msgs")->getElementsByTagName("a");
-
-		
-		foreach ($list_a_mess as $va) {
-			if($va->getAttribute("href") == "/account/inbox"){
-				$result["inbox"] = $va->nodeValue;
-				break;
-			}
-		}
-
-		
-		$result["username"] = getElementByClass($dom, "a", "lt-user-login")->nodeValue;
-
-		$result["avatar"] = getElementByClass($dom, "div", "avatar")->getElementsByTagName("img")[0]->getAttribute("src");
-		
 
 		$xpath = new DOMXpath($dom);
 
