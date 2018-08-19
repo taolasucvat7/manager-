@@ -87,6 +87,14 @@ switch ($_GET["action"]) {
 		echo json_encode($info);
 		
 		break;
+
+
+	case 'chucnang':
+
+		print_r(inboxPage($ch, 2));
+
+		break;
+
 	default:
 		//echo "{'username' : 'cuong077', 'avatar':'noavatar'}";
 		echo json_encode(getInfo($ch));
@@ -122,6 +130,93 @@ print_r(doListItem($ch, array(
 
 //echo (int)null;
 
+
+
+function inboxPage($ch, $page = 1){
+	$url = "https://www.listia.com/account/inbox?page=".$page;
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1); 
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE); 
+	$response = curl_exec($ch);
+
+	try {
+		$dom = new DOMDocument();
+		$dom->loadHTML($response);
+
+
+		$result = array();
+
+		if(!$dom->getElementById("sub_menu_your_auctions")){
+			$result["error"] = false;
+			return $result;
+		}
+		
+		$list_a_list = $dom->getElementById("sub_menu_your_auctions")->getElementsByTagName("a");
+
+		
+		foreach ($list_a_list as $va) {
+
+			if($va->getAttribute("href") == "/account/auctions_listed"){
+				$result["listed"] = $va->nodeValue;
+				break;
+			}
+
+		}
+
+
+		$list_a_mess = $dom->getElementById("sub_menu_msgs")->getElementsByTagName("a");
+
+		
+		foreach ($list_a_mess as $va) {
+			if($va->getAttribute("href") == "/account/inbox"){
+				$result["inbox"] = $va->nodeValue;
+				break;
+			}
+		}
+
+		
+		$result["username"] = getElementByClass($dom, "a", "lt-user-login")->nodeValue;
+
+		$result["avatar"] = getElementByClass($dom, "div", "avatar")->getElementsByTagName("img")[0]->getAttribute("src");
+		
+
+		$xpath = new DOMXpath($dom);
+
+		$list_message_1 = $xpath->query("*//form[@id = 'message_form']/div[@onmouseover]");
+
+		$list_message_2 = array();
+
+
+		foreach ($list_message_1 as $mess) {
+			
+			$mess_class = new Message();
+
+			$mess_class->title = trim(getElementByClass($mess, "div", "msg_subject")->nodeValue);
+
+			$mess_class->from = getElementByClass($mess, "span", "msg_from")->nodeValue;
+
+			$mess_class->id = str_replace("/account/message/", "", getElementByClass($mess, "span", "msg_subject")->getElementsByTagName("a")[0]->getAttribute("href"));
+
+			if((int)(getElementByClass($mess, "div", "msg_subject")->getElementsByTagName("b")->length) > 0)
+				$mess_class->read = 0;
+			else
+				$mess_class->read = 1;
+				
+			$list_message_2[] = $mess_class;
+		}
+
+		$result["messages"] = $list_message_2;
+
+		$result["error"] = false;
+
+	}catch (Exception $e) {
+
+	    $result["error"] = true;
+
+	}
+	return $result;
+}
 
 
 function getInfo($ch){
@@ -198,7 +293,7 @@ function jsonNotify($notify_raw){
 		
 		$arr[] = array(
 			"title" => $temp_title->textContent,
-			"link"	=> $temp_link->getAttribute("href")
+			"id"	=> str_replace("/notifications/", "", $temp_link->getAttribute("href"))
 		);
 		
 	}
@@ -707,3 +802,9 @@ function contains($string, $keyword)
   }
 
 
+class Message{
+	public $title = "";
+	public $read;
+	public $id = "";
+	public $from = "";
+}
