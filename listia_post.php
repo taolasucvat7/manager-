@@ -183,7 +183,6 @@ switch ($_GET["action"]) {
 					else
 						$auction_info = getAuctionFromNotify($ch, array("auction" => $type_id[1]));
 					print_r($auction_info);
-					exit;
 					echo "<h3 style='text-align:center;'>".$auction_info["title"]."</h3>";
 					echo '<h4>Địa chỉ nhận hàng<h4>';
 					echo '<div style="margin-left:20px;background-color:#eee;width:20%;">'.$auction_info["address_confirmation"].'</div>';
@@ -193,6 +192,9 @@ switch ($_GET["action"]) {
 						echo $mess;
 					}
 					echo '</ul>';
+					echo '<h4>Số người bid<h4>';
+					echo $auction_info["div_bid"];
+
 					//print_r($auction_info["form_action"]);
 					echo '
 						<form action="listia_post.php?action=chucnang&is=send_message_contact" method="POST">
