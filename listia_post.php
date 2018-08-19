@@ -182,7 +182,7 @@ switch ($_GET["action"]) {
 						$auction_info = getAuctionFromNotify($ch, array("notification" => $type_id[1]));
 					else
 						$auction_info = getAuctionFromNotify($ch, array("auction" => $type_id[1]));
-					print_r($auction_info);
+					
 					echo "<h3 style='text-align:center;'>".$auction_info["title"]."</h3>";
 					echo '<h4>Địa chỉ nhận hàng<h4>';
 					echo '<div style="margin-left:20px;background-color:#eee;width:20%;">'.$auction_info["address_confirmation"].'</div>';
