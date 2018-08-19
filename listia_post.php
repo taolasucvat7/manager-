@@ -291,33 +291,44 @@ function getAuctionFromNotify($ch, $list_id = array()){
 
 		$xpath = new DOMXpath($dom);
 
-		$title = $xpath->query("//title")[0]->nodeValue;
-		$result["title"] = $title;
-
-		$address_confirmation_bubble = $xpath->query("//div[@class = 'address_confirmation_bubble']");
-		if($address_confirmation_bubble){
-			$maddress_confirmation_bubble_html = $dom->saveHTML($address_confirmation_bubble[0]);
-			$result["address_confirmation"] = $maddress_confirmation_bubble_html;
-		}else{
-			$result["address_confirmation"] = "";
-		}
-
-		$message_log = $xpath->query("//div[@class = 'message-log']/ul[@class = 'comments']/li");
-
-		foreach ($message_log as $mess) {
-			$result["message_log"][] = $dom->saveHTML($mess);
+		if($xpath->query("//title")){
+			$title = $xpath->query("//title")[0]->nodeValue;
+			$result["title"] = $title;
 		}
 		
 
-		$input_forms = $xpath->query("*//form[@id = 'auction-agent-form-email-form-2']/input");
-
-		foreach ($input_forms as $input) {
-			$result["input_form"][$input->getAttribute("name")] = $input->getAttribute("value");
+		if($xpath->query("//div[@class = 'address_confirmation_bubble']")){
+			$address_confirmation_bubble = $xpath->query("//div[@class = 'address_confirmation_bubble']");
+			if($address_confirmation_bubble){
+				$maddress_confirmation_bubble_html = $dom->saveHTML($address_confirmation_bubble[0]);
+				$result["address_confirmation"] = $maddress_confirmation_bubble_html;
+			}else{
+				$result["address_confirmation"] = "";
+			}
 		}
-		$result["input_form"]["subject"] = $xpath->query("//input[@id = 'subject']")[0]->getAttribute("value");
 
-		$form_action = $xpath->query("//form[@id = 'auction-agent-form-email-form-2']")[0]->getAttribute("action");
-		$result["form_action"] = $form_action ;
+		if($xpath->query("//div[@class = 'message-log']/ul[@class = 'comments']/li")){
+			$message_log = $xpath->query("//div[@class = 'message-log']/ul[@class = 'comments']/li");
+
+			foreach ($message_log as $mess) {
+				$result["message_log"][] = $dom->saveHTML($mess);
+			}
+		}
+
+		if($xpath->query("*//form[@id = 'auction-agent-form-email-form-2']/input")){
+			$input_forms = $xpath->query("*//form[@id = 'auction-agent-form-email-form-2']/input");
+
+			foreach ($input_forms as $input) {
+				$result["input_form"][$input->getAttribute("name")] = $input->getAttribute("value");
+			}
+			$result["input_form"]["subject"] = $xpath->query("//input[@id = 'subject']")[0]->getAttribute("value");
+		}
+		
+		if($xpath->query("//form[@id = 'auction-agent-form-email-form-2']")){
+			$form_action = $xpath->query("//form[@id = 'auction-agent-form-email-form-2']")[0]->getAttribute("action");
+			$result["form_action"] = $form_action ;
+		}
+		
 
 
 
