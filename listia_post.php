@@ -124,7 +124,7 @@ switch ($_GET["action"]) {
 		$info = getInfo($ch);
 		if(!$info["error"]){
 			echo "<h1 style='text-align:center;'><a href='listia_post.php?action=chucnang' style='color:red;'>.::Automatic Listia Home::.</a></h1>";
-			echo "<h2><img src='".$info["avatar"]."' />Tài khoản : <span style='color:green;'>".$info["username"]."</span></h2>";
+			echo "<h2><img src='".$info["avatar"]."' />Tài khoản : <span style='color:green;'><a href='https://listia.com/profile/".$info["profile_id"]."'>".$info["username"]."</a></span></h2>";
 			echo "<h2><a href='listia_post.php?action=chucnang&is=inboxlist&page=1&style=web'>".$info["inbox"]."</a></h2>";
 			echo "<h2 style='color:blue;'>Xem Notification(no-id) hoặc Auction(au-id)</h2>";
 			echo '<form action="listia_post.php" method="get">
@@ -629,6 +629,8 @@ function getInfo($ch){
 
 		
 		$result["username"] = getElementByClass($dom, "a", "lt-user-login")->nodeValue;
+
+		$result["profile_id"] = str_replace("/profile/", "", getElementByClass($dom, "a", "lt-user-login")->getAttribute("href"));
 
 		$result["avatar"] = getElementByClass($dom, "div", "avatar")->getElementsByTagName("img")[0]->getAttribute("src");
 		
