@@ -99,6 +99,7 @@ switch ($_GET["action"]) {
 		));
 
 		try{
+			$info["test"] = $result;
 			if($result->redirect_url != null){
 				preg_match("/https:\/\/www.listia.com\/auction\/(.*?)-/", $result->redirect_url, $matches);
 				try{
