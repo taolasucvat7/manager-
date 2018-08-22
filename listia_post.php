@@ -712,7 +712,7 @@ function login($ch, $user, $password){
 	curl_setopt($ch, CURLOPT_POST, true);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $postinfo);
 	$html = curl_exec($ch);
-
+	file_put_contents("log.txt", $html);
 	}
 
 
